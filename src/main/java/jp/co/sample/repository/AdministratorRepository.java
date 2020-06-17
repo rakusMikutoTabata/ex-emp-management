@@ -1,5 +1,7 @@
 package jp.co.sample.repository;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -42,13 +44,18 @@ public class AdministratorRepository {
 	 */
 	public Administrator findbyMailAddressAndPassword(String mailAddress, String password) {
 		String sql = "select id,name,mail_address,password from administrators where mail_address=:mailAddress and password=:password;";
-		SqlParameterSource param = new MapSqlParameterSource().addValue("mail_address", mailAddress)
-				.addValue("password", password);
-		Administrator administrator = template.queryForObject(sql, param, ADMINISTRATOR_ROW_MAPPER);
-		return administrator;
+		SqlParameterSource param = new MapSqlParameterSource().addValue("mailAddress", mailAddress).addValue("password",
+				password);
+		List<Administrator> administratorList = template.query(sql, param, ADMINISTRATOR_ROW_MAPPER);
+		if (administratorList.size() == 0) {
+			return null;
+		}
+		return administratorList.get(0);
 	}
 
 	/**
+	 *
+	 * 管理者情報の追加.
 	 * 
 	 * @param administrator 管理者情報
 	 */
