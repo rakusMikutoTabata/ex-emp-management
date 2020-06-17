@@ -29,6 +29,7 @@ public class EmployeeController {
 	 * @param model リクエストスコープ
 	 * @return 全従業員情報のリスト
 	 */
+	@RequestMapping("/showList")
 	public String showList(Model model) {
 		List<Employee> employeeList = new ArrayList<>();
 		employeeList = employeeService.showList();
