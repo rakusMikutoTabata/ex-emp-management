@@ -20,7 +20,7 @@ import jp.co.sample.repository.EmployeeRepository;
 
 public class EmployeeService {
 	@Autowired
-	private EmployeeRepository employeeRespository;
+	private EmployeeRepository employeeRepository;
 	
 	/**
 	 * 従業員情報を全件取得.
@@ -28,6 +28,16 @@ public class EmployeeService {
 	 * @return 全従業員情報
 	 */
 	public List<Employee> showList(){
-		return employeeRespository.findAll();
+		return employeeRepository.findAll();
 	}
+	
+	/**
+	 *　1人の従業員情報を取得
+	 * 
+	 * @param id ID
+	 * @return IDが合致した従業員情報
+	 */
+	public Employee showDetail(Integer id) {
+		return employeeRepository.load(id);
+	} 
 }
