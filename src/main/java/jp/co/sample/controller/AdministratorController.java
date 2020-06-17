@@ -72,6 +72,8 @@ public class AdministratorController {
 	}
 
 	/**
+	 * ログイン画面を表示する.
+	 * 
 	 * @return ログイン画面
 	 */
 	@RequestMapping("/")
@@ -79,6 +81,13 @@ public class AdministratorController {
 		return "administrator/login";
 	}
 
+	/**
+	 * ログインの成否に応じて分岐.
+	 * 
+	 * @param form フォーム
+	 * @param model リクエストスコープ
+	 * @return　従業員一覧画面
+	 */
 	@RequestMapping("/login")
 	public String login(LoginForm form, Model model) {
 		Administrator administrator = administratorService.login(form.getMailAddress(), form.getPassword());
@@ -86,7 +95,7 @@ public class AdministratorController {
 			model.addAttribute("message", "メールアドレスまたはパスワードが不正です。");
 			return toLogin();
 		}
-		session.setAttribute("administratorName", administrator);
+		session.setAttribute("administratorName", administrator.getName());
 		return "forward:/employee/showList";
 
 	}

@@ -8,7 +8,7 @@ import jp.co.sample.domain.Administrator;
 import jp.co.sample.repository.AdministratorRepository;
 
 /**
- * Repository操作の集約.
+ * 管理者操作の集約.
  * 
  * @author mikuto.tabata
  *
@@ -29,7 +29,8 @@ public class AdministratorService {
 	}
 	
 	/**
-	 * ログイン処理
+	 * ログイン処理.
+	 * 
 	 * @param mailAddress メールアドレス
 	 * @param password パスワード
 	 * @return 管理者情報
