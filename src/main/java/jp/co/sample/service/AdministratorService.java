@@ -6,6 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import jp.co.sample.repository.AdministratorRepository;
 
+/**
+ * Repository仮宣言.
+ * 
+ * @author mikuto.tabata
+ *
+ */
 @Service
 @Transactional
 public class AdministratorService {

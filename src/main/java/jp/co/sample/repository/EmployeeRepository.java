@@ -12,6 +12,11 @@ import org.springframework.stereotype.Repository;
 
 import jp.co.sample.domain.Employee;
 
+/**
+ * 従業員のデータベース操作.
+ * @author mikuto.tabata
+ *
+ */
 @Repository
 public class EmployeeRepository {
 	@Autowired
@@ -38,6 +43,7 @@ public class EmployeeRepository {
 	};
 
 	/**
+	 * 
 	 * @param id 検索したいID
 	 * @return idと合致した行の要素が詰まったemployee
 	 */

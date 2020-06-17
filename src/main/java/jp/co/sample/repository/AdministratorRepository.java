@@ -10,13 +10,19 @@ import org.springframework.stereotype.Repository;
 
 import jp.co.sample.domain.Administrator;
 
+/**
+ * administratorsテーブルを操作するリポジトリ.
+ * 
+ * @author mikuto.tabata
+ *
+ */
 @Repository
 public class AdministratorRepository {
 	@Autowired
 	private NamedParameterJdbcTemplate template;
 
 	/**
-	 * RowMapper設定
+	 * RowMapper設定.
 	 */
 	private static final RowMapper<Administrator> ADMINISTRATOR_ROW_MAPPER = (rs, i) -> {
 		Administrator administrator = new Administrator();
@@ -28,9 +34,11 @@ public class AdministratorRepository {
 	};
 
 	/**
+	 * メールアドレスとパスワードから管理者情報を検索する.
+	 * 
 	 * @param mailAddress メールアドレス
 	 * @param password    パスワード
-	 * @return メールアドレスとパスワードが合致した行
+	 * @return 管理者情報
 	 */
 	public Administrator findbyMailAddressAndPassword(String mailAddress, String password) {
 		String sql = "select id,name,mail_address,password from administrators where mail_address=:mailAddress and password=:password;";
@@ -41,7 +49,8 @@ public class AdministratorRepository {
 	}
 
 	/**
-	 * @param administrator 追加する行の情報 paramで受け取った情報を追加
+	 * 
+	 * @param administrator 管理者情報
 	 */
 	public void insert(Administrator administrator) {
 		SqlParameterSource param = new BeanPropertySqlParameterSource(administrator);

@@ -1,5 +1,9 @@
 package jp.co.sample.form;
 
+/**
+ * @author mikuto.tabata
+ *　管理者情報のform.
+ */
 public class InsertAdministratorForm {
 	/**
 	 * 名前
