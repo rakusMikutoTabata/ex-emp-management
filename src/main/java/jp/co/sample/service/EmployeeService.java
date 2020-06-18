@@ -10,7 +10,7 @@ import jp.co.sample.domain.Employee;
 import jp.co.sample.repository.EmployeeRepository;
 
 /**
- * 従業員操作の集約.
+ * 従業員の操作を行うサービス.
  * 
  * @author mikuto.tabata
  *
@@ -32,7 +32,7 @@ public class EmployeeService {
 	}
 	
 	/**
-	 *　1人の従業員情報を取得
+	 *　1人の従業員情報を取得.
 	 * 
 	 * @param id ID
 	 * @return IDが合致した従業員情報

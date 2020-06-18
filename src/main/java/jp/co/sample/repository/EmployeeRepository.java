@@ -49,7 +49,7 @@ public class EmployeeRepository {
 	 */
 	public Employee load(Integer id) {
 		String sql = "select id,name,image,gender,hire_date,mail_address,zip_code,address,telephone,salary,"
-				+ "characteristics,dependents_count from employees where id=:id　order by hire_date desc;";
+				+ "characteristics,dependents_count from employees where id=:id;";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
 		Employee employee = template.queryForObject(sql, param, EMPLOYEE_ROW_MAPPER);
 		return employee;
@@ -60,7 +60,7 @@ public class EmployeeRepository {
 	 */
 	public List<Employee> findAll() {
 		String sql = "select id,name,image,gender,hire_date,mail_address,zip_code,address,telephone,salary,"
-				+ "characteristics,dependents_count from employees;";
+				+ "characteristics,dependents_count from employees order by hire_date desc;";
 		List<Employee> employeeList = template.query(sql, EMPLOYEE_ROW_MAPPER);
 		return employeeList;
 	}
