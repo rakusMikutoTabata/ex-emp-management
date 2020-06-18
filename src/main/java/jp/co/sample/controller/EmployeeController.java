@@ -42,17 +42,32 @@ public class EmployeeController {
 		return "employee/list";
 	}
 
-	/**　
+	/**
 	 * IDと合致する従業員情報を取得し、個別の従業員ページにフォワード.
 	 * 
-	 * @param id ID
+	 * @param id    ID
 	 * @param model リクエストスコープ
-	 * @return　IDと合致する従業員情報
+	 * @return IDと合致する従業員情報
 	 */
 	@RequestMapping("/showDetail")
 	public String showDetail(String id, Model model) {
 		Employee employee = employeeService.showDetail(Integer.parseInt(id));
 		model.addAttribute("employee", employee);
 		return "employee/detail";
+	}
+
+	/**
+	 * 扶養人数の更新.
+	 * 
+	 * @param form            フォーム
+	 * @param dependentsCount 扶養人数
+	 * @return 従業員一覧画面
+	 */
+	@RequestMapping("/update")
+	public String update(UpdateEmployeeForm form, Integer dependentsCount) {
+		Employee employee = employeeService.showDetail(Integer.parseInt(form.getId()));
+		employee.setDependentsCount(dependentsCount);
+		employeeService.update(employee);
+		return "redirect:/employee/showList";
 	}
 }
