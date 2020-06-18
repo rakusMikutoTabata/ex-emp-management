@@ -21,23 +21,32 @@ import jp.co.sample.repository.EmployeeRepository;
 public class EmployeeService {
 	@Autowired
 	private EmployeeRepository employeeRepository;
-	
+
 	/**
 	 * 従業員情報を全件取得.
 	 * 
 	 * @return 全従業員情報
 	 */
-	public List<Employee> showList(){
+	public List<Employee> showList() {
 		return employeeRepository.findAll();
 	}
-	
+
 	/**
-	 *　1人の従業員情報を取得.
+	 * 1人の従業員情報を取得.
 	 * 
 	 * @param id ID
 	 * @return IDが合致した従業員情報
 	 */
 	public Employee showDetail(Integer id) {
 		return employeeRepository.load(id);
-	} 
+	}
+
+	/**
+	 * 従業員情報を更新.
+	 * 
+	 * @param employee 従業員情報
+	 */
+	public void update(Employee employee) {
+		employeeRepository.update(employee);
+	}
 }
